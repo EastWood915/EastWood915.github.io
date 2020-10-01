@@ -1,4 +1,3 @@
 {
-    "python.dataScience.jupyterServerURI": "local",
-    "python.pythonPath": "/home/wojciech/miniconda3/envs/covid/bin/python"
+    "python.dataScience.jupyterServerURI": "local"
 }
