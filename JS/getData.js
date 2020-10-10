@@ -1,27 +1,20 @@
-var new_cases = $("#new")
-var active_cases = $("#active")
-var case_ratio = $("#ratio")
-
-var data;
-
 Papa.parse('https://eastwood915.github.io/Data/data.csv', {
   header: true,
   download: true,
   dynamicTyping: true,
   complete: function(results) {
     console.log(results);
-    data = results.data;
 
-    var today_data = data[data.length-2]
-
-    new_cases.text(today_data["Liczba nowych przypadków"])
-    active_cases.text(today_data["Liczba aktywnych przypadków"])
-    case_ratio.text(today_data["Aktywnych na 10tys mieszkańców"])
+    update_fields(results.data[results.data.length-1])
   }
-});
+})
 
 
-//new_cases.text("111")
-active_cases.text("222") 
-case_ratio.text("6.66") 
 
+function update_fields(data)
+{
+  $("#new").text(data["Liczba nowych przypadków"])
+  $("#active").text(data["Liczba aktywnych przypadków"])
+  $("#ratio").text(data["Aktywnych na 10tys mieszkańców"])
+  $("#date").text(data["Data"])
+}
