@@ -11,12 +11,12 @@ def fix_str(item):
 def fix_series(series):
     return series.apply(fix_str)
 
-start_date = date.fromisoformat('2020-09-17')
+start_date = date.fromisoformat('2020-10-04')
 
 for single_date in (start_date + timedelta(n) for n in range(95)):
     
     today = single_date
-    df_data = pd.read_csv('Data/data.csv')
+    df_data = pd.read_csv('../Data/data.csv')
     df_data
 
 
