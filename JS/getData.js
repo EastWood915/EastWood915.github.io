@@ -5,7 +5,7 @@ Papa.parse('https://eastwood915.github.io/Data/data.csv', {
   complete: function(results) {
     console.log(results);
 
-    update_fields(results.data[results.data.length-1])
+    update_fields(results.data[results.data.length-2])
     draw_plot("wykres", results.data, "Data", "Liczba aktywnych przypadków")
   }
 })
@@ -41,6 +41,7 @@ function extract_data_for_plot(data, X_series_name, Y_series_name)
 function draw_plot(object_id, data, X_series_name, Y_series_name)
 {
   var plot_config = {
+    responsive: true,
     type: 'bar'
   }
 
