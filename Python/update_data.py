@@ -16,7 +16,7 @@ start_date = date.fromisoformat('2020-10-04')
 for single_date in (start_date + timedelta(n) for n in range(95)):
     
     today = single_date
-    df_data = pd.read_csv('../Data/data.csv')
+    df_data = pd.read_csv('Data/data.csv')
     df_data
 
 
@@ -68,7 +68,11 @@ for single_date in (start_date + timedelta(n) for n in range(95)):
     df_tab.drop(df_tab.index[0], inplace=True)
     df_tab[df_tab['Lp.'] == 'Razem Małopolska'] = df_tab[df_tab['Lp.'] == 'Razem Małopolska'].shift(periods = 1, axis = 1)
 
-    df_tab = df_tab[['Powiat', 'Ogółem', 'Ludność', 'Liczba aktywnych przypadków']]
+    try:
+        df_tab = df_tab[['Powiat', 'Ogółem', 'Ludność', 'Liczba aktywnych przypadków']]
+    except:
+        df_tab = df_tab[['Powiat', 'Ogółem', 'Liczba aktywnych przypadków']]
+        df_tab['Ludność'] = 779115
 
 
     df_Krk = df_tab[df_tab['Powiat'] == 'm. Kraków']
