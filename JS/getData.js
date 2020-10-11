@@ -10,6 +10,9 @@ $(function(){
       draw_plot("plot-new", results.data, "Data", "Liczba nowych przypadków")
       draw_plot("plot-active", results.data, "Data", "Liczba aktywnych przypadków")
       draw_plot("plot-active-ratio", results.data, "Data", "Aktywnych na 10tys mieszkańców")
+
+      Plotly.relayout("plot-active", {})
+      Plotly.relayout("plot-active-ratio", {})
     }
   })
 })
@@ -46,6 +49,7 @@ function draw_plot(object_id, data, X_series_name, Y_series_name)
 {
   var plot_config = {
     responsive: true,
+    staticPlot: true,
     type: 'bar'
   }
 
@@ -65,14 +69,26 @@ function draw_plot(object_id, data, X_series_name, Y_series_name)
     [Object.assign(
       extract_data_for_plot(data, X_series_name, Y_series_name),
       plot_config)],
-    plot_layout
+    plot_layout,
+    {
+      staticPlot: true,
+      responsive: true
+    }
   )
 }
 
-$('#nav-active-tab').click(function(){
+/*$('#nav-active-tab').click(function(){
   Plotly.relayout("plot-active", {})
 })
 
 $('#nav-active-ratio-tab').click(function(){
   Plotly.relayout("plot-active-ratio", {})
-})
+})*/
+
+$('#nav-active-tab').on('shown.bs.tab', function(event){
+  Plotly.relayout("plot-active", {})
+});
+
+$('#nav-active-ratio-tab').on('shown.bs.tab', function(event){
+  Plotly.relayout("plot-active-ratio", {})
+});

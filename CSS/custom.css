@@ -6,3 +6,7 @@
     color: #343a40 !important;
     background-color: #f8f9fa !important;
 }
+
+#chart{
+    flex: 1;
+}
