@@ -68,3 +68,11 @@ function draw_plot(object_id, data, X_series_name, Y_series_name)
     plot_layout
   )
 }
+
+$('#nav-active-tab').click(function(){
+  Plotly.relayout("plot-active", {})
+})
+
+$('#nav-active-ratio-tab').click(function(){
+  Plotly.relayout("plot-active-ratio", {})
+})
