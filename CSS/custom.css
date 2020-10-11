@@ -1,0 +1,8 @@
+.nav-tabs > a{
+    color: #f8f9fa !important;
+}
+
+.nav-tabs > a.active{
+    color: #343a40 !important;
+    background-color: #f8f9fa !important;
+}

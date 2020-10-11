@@ -7,7 +7,9 @@ $(function(){
       console.log(results);
   
       update_fields(results.data[results.data.length-2])
-      draw_plot("wykres", results.data, "Data", "Liczba nowych przypadków")
+      draw_plot("plot-new", results.data, "Data", "Liczba nowych przypadków")
+      draw_plot("plot-active", results.data, "Data", "Liczba aktywnych przypadków")
+      draw_plot("plot-active-ratio", results.data, "Data", "Aktywnych na 10tys mieszkańców")
     }
   })
 })
@@ -20,7 +22,7 @@ function update_fields(data)
   
   $("#new").text(data["Liczba nowych przypadków"])
   $("#active").text(data["Liczba aktywnych przypadków"])
-  $("#ratio").text(data["Aktywnych na 10tys mieszkańców"].toFixed(2))
+  $("#ratio").text(data["Aktywnych na 10tys mieszkańców"].toFixed(2).replace('.', ','))
   $("#date").text(data["Data"])
 }
 
@@ -49,8 +51,9 @@ function draw_plot(object_id, data, X_series_name, Y_series_name)
 
   var plot_layout = {
     title: Y_series_name,
-    paper_bgcolor: '#e9ecef',
-    plot_bgcolor: '#e9ecef'
+    paper_bgcolor: '#f8f9fa',
+    plot_bgcolor: '#f8f9fa',
+    autosize: true
   }
 
   Plotly.newPlot(
