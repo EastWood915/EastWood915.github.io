@@ -1,13 +1,15 @@
-Papa.parse('https://eastwood915.github.io/Data/data.csv', {
-  header: true,
-  download: true,
-  dynamicTyping: true,
-  complete: function(results) {
-    console.log(results);
-
-    update_fields(results.data[results.data.length-2])
-    draw_plot("wykres", results.data, "Data", "Liczba aktywnych przypadków")
-  }
+$(function(){
+  Papa.parse('https://eastwood915.github.io/Data/data.csv', {
+    header: true,
+    download: true,
+    dynamicTyping: true,
+    complete: function(results) {
+      console.log(results);
+  
+      update_fields(results.data[results.data.length-2])
+      draw_plot("wykres", results.data, "Data", "Liczba nowych przypadków")
+    }
+  })
 })
 
 
@@ -46,7 +48,9 @@ function draw_plot(object_id, data, X_series_name, Y_series_name)
   }
 
   var plot_layout = {
-    title: Y_series_name
+    title: Y_series_name,
+    paper_bgcolor: '#e9ecef',
+    plot_bgcolor: '#e9ecef'
   }
 
   Plotly.newPlot(
