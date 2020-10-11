@@ -53,7 +53,11 @@ function draw_plot(object_id, data, X_series_name, Y_series_name)
     title: Y_series_name,
     paper_bgcolor: '#f8f9fa',
     plot_bgcolor: '#f8f9fa',
-    autosize: true
+    autosize: true,
+    margin: {
+      l: 25,
+      r: 0
+    }
   }
 
   Plotly.newPlot(
