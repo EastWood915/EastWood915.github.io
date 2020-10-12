@@ -61,7 +61,9 @@ function draw_plot(object_id, data, X_series_name, Y_series_name)
     margin: {
       l: 25,
       r: 0
-    }
+    },
+    xaxis: {fixedrange: true},
+    yaxis: {fixedrange: true}
   }
 
   Plotly.newPlot(
@@ -71,19 +73,12 @@ function draw_plot(object_id, data, X_series_name, Y_series_name)
       plot_config)],
     plot_layout,
     {
-      staticPlot: true,
-      responsive: true
+      responsive: true,
+      displayModeBar: false
     }
   )
 }
 
-/*$('#nav-active-tab').click(function(){
-  Plotly.relayout("plot-active", {})
-})
-
-$('#nav-active-ratio-tab').click(function(){
-  Plotly.relayout("plot-active-ratio", {})
-})*/
 
 $('#nav-active-tab').on('shown.bs.tab', function(event){
   Plotly.relayout("plot-active", {})
