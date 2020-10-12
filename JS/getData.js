@@ -59,7 +59,7 @@ function draw_plot(object_id, data, X_series_name, Y_series_name)
     plot_bgcolor: '#f8f9fa',
     autosize: true,
     margin: {
-      l: 25,
+      l: 30,
       r: 0
     },
     xaxis: {fixedrange: true},
